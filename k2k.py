@@ -1,20 +1,27 @@
 import curses
 import time
+import signal
+import sys
 
 N_CNT = 12
 M_CNT = 24
 
 MIN_NUM = 1
 MAX_NUM = 26 
+
+def handler(signal, frame):
+        print('Done');
+        sys.exit(0)
+signal.signal(signal.SIGINT, handler)
  
 stdscr = curses.initscr()
- 
+
 def main(stdscr):
 
     n = N_CNT
     m = M_CNT
 
-    for i in range(MIN_NUM, MAX_NUM):
+    while(True):
 
         for i in range(MIN_NUM, MAX_NUM):
 
@@ -37,6 +44,8 @@ def main(stdscr):
             stdscr.refresh()
 
             time.sleep(0.1)
+
+    pass
 
 if __name__ == '__main__':
     curses.wrapper(main)
