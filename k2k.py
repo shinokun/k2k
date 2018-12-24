@@ -21,6 +21,8 @@ def main(stdscr):
     n = N_CNT
     m = M_CNT
 
+    curses.init_pair(1, curses.COLOR_RED, curses.COLOR_BLACK)
+
     while(True):
 
         for i in range(MIN_NUM, MAX_NUM):
@@ -28,7 +30,7 @@ def main(stdscr):
             m =  m + 1
 
             stdscr.clear()
-            stdscr.addstr(n, m, 'X')
+            stdscr.addstr(n, m, 'X',curses.color_pair(1))
             stdscr.refresh()
 
             time.sleep(0.1)
@@ -40,7 +42,7 @@ def main(stdscr):
             m =  m - 1
 
             stdscr.clear()
-            stdscr.addstr(n, m, 'X')
+            stdscr.addstr(n, m, 'X',curses.color_pair(1))
             stdscr.refresh()
 
             time.sleep(0.1)
